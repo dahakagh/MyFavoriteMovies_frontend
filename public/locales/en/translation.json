@@ -1,0 +1,35 @@
+{   
+    "ResultCardPage": {
+        "add-to-watchlist": "Add to Watchlist",
+        "add-to-watched": "Add to Watched"
+    },
+
+    "AddPage": {
+        "placeholder": "Search for a movie..."
+    },
+
+    "LoginForm": {
+        "username": "Username",
+        "password": "Password",
+        "choose-pass": "Please choose a password",
+        "signin": "Sign In",
+        "forgot-pass": "Forgot a password?",
+        "err": "Incorrect login or password"
+    },
+
+    "Header" : {
+    "watchlist": "Watchlist",
+    "watched": "Watched",
+    "add": "+ ADD"
+    },
+
+    "WatchedPage": {
+        "heading": "Watched Movies",
+        "no-movies": "No movies in your list! Add some!"
+    },
+    "WatchlistPage": {
+        "my-watchlist": "My watchlist",
+        "no-movielist": "No movies in your list! Add some!"
+    }
+
+}

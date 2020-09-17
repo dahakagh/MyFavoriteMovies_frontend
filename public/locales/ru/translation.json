@@ -1,0 +1,33 @@
+{   
+    "ResultCardPage": {
+        "add-to-watchlist": "В мой список",
+        "add-to-watched": "Посмотрел"
+    },
+
+    "AddPage": {
+        "placeholder": "Найти фильмы..."
+    },
+
+    "LoginForm": {
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "choose-pass": "Пожалуйста введите пароль",
+    "signin": "Вход",
+    "forgot-pass": "Забыли пароль?",
+    "err": "Неправильный логин или пароль!"
+},
+    "Header" : {
+    "watchlist": "Список фильмов",
+    "watched": "Посмотрел",
+    "add": "+ Добавить"
+    },
+    "WatchedPage": {
+        "heading": "Просмотренные фильмы",
+        "no-movies": "Фильмов нет, добавьте что-нибудь :)"
+    },
+    "WatchlistPage": {
+        "my-watchlist": "Мой список фильмов",
+        "no-movielist": "Добавьте фильмы в ваш список"
+    }
+
+}
