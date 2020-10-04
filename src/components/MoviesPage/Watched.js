@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../context/GlobalState";
-import { MovieCard } from "./MovieCard";
-import {useTranslation} from 'react-i18next'
-
+import { GlobalContext } from "../../../context/GlobalState";
+import { MovieCard } from "../FavoriteMoviesPage/MovieCard";
+import { useTranslation } from "react-i18next";
 
 export const Watched = () => {
-
-  const {t, i18n} = useTranslation();
+  const { t } = useTranslation();
   const { watched } = useContext(GlobalContext);
 
   return (
     <div className="movie-page">
       <div className="container">
         <div className="header">
-          <h1 className="font-bold text-xl">{t('WatchedPage.heading')}</h1>
+          <h1 className="font-bold text-xl">{t("WatchedPage.heading")}</h1>
         </div>
 
         {watched.length > 0 ? (
@@ -23,7 +21,7 @@ export const Watched = () => {
             ))}
           </div>
         ) : (
-          <h2 className="no-movies">{t('WatchedPage.no-movies')}</h2>
+          <h2 className="no-movies">{t("WatchedPage.no-movies")}</h2>
         )}
       </div>
     </div>
