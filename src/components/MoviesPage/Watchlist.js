@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../../context/GlobalState";
-import { MovieCard } from "./MovieCard";
+import { GlobalContext } from "../../context/GlobalState";
+import { MovieCard } from "./MovieCard/MovieCard";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
+import "./WatchlistStyles.css"
 
 export const Watchlist = () => {
   const { t } = useTranslation();
@@ -32,7 +33,7 @@ export const Watchlist = () => {
   };
 
 
-  const username = JSON.parse(localStorage.getItem('usersData')).login
+  const username = JSON.parse(localStorage.getItem('user')).login
 
 
   return (

@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../../context/GlobalState";
-import { MovieCard } from "../FavoriteMoviesPage/MovieCard";
+import { GlobalContext } from "../../context/GlobalState";
+import { MovieCard } from "./MovieCard/MovieCard";
 import { useTranslation } from "react-i18next";
+import './WatchedStyles.css'
+
 
 export const Watched = () => {
   const { t } = useTranslation();

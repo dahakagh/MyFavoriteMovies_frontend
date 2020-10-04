@@ -6,7 +6,7 @@ import EmailField from "./components/EmailField";
 import PasswordField from "./components/PasswordField";
 import SignInButton from "./components/SignInButton";
 
-const Auth = () => {
+const SignIn = () => {
   const [err, setErr] = useState(null);
   const history = useHistory();
   const [t] = useTranslation();
@@ -58,4 +58,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default SignIn;
