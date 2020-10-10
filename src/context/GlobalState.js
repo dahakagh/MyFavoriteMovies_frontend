@@ -20,6 +20,7 @@ export const GlobalProvider = (props) => {
       "user",
       JSON.stringify({ login: "Admin", password: "12345" })
     );
+
     localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
     localStorage.setItem("watched", JSON.stringify(state.watched));
   }, [state]);

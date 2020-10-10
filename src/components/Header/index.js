@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center py-4 bg-blue-900">
       <Link
-        to="/"
+        to="/main"
         className="ml-56 text-4xl text-blue-200 font-extrabold hover:text-red-500"
       >
         Favorite Movies
@@ -17,7 +17,7 @@ const Header = () => {
 
       <ul className="hidden md:flex overflow-x-hidden mr-56 font-extrabold">
         <li className="mr-6 py-2">
-          <Link to="/" className="text-white text-lg hover:text-blue-300">
+          <Link to="/main" className="text-white text-lg hover:text-blue-300">
             {t("Header.watchlist")}
           </Link>
         </li>

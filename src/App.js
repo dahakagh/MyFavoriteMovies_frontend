@@ -5,10 +5,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Header from "./components/Header";
 import { Watchlist } from "./components/MoviesPage/Watchlist";
 import { Watched } from "./components/MoviesPage/Watched";
-import {Add } from "./components/SearchPage";
+import { Add } from "./components/SearchPage";
 import { GlobalProvider } from "./context/GlobalState";
 import "./App.css";
 import "./lib/font-awesome/css/all.min.css";
@@ -18,13 +17,11 @@ function App() {
   return (
     <GlobalProvider>
       <Router>
-        <Header />
         <Switch>
           <Route exact path="/signin" component={SignIn}></Route>
-          <Route exact path="/" component={Watchlist} />
+          <Route exact path="/main" component={Watchlist} />
           <Route path="/add" component={Add} />
           <Route path="/watched" component={Watched} />
-
         </Switch>
         <Redirect to="/signin" />
       </Router>
