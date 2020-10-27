@@ -3,12 +3,9 @@ import { ResultCard } from "./ResultCard/ResultCard";
 import { useTranslation } from "react-i18next";
 import "./SearchPageStyles.css";
 import {
-  fetchGenresRequest,
-  fetchNowPlayingRequest,
-  fetchPopularRequest,
-  fetchTopRatedRequest,
-  fetchUpComingRequest,
+  fetchGenresRequest
 } from "../../api";
+import {apiKey, url} from '../../api'
 import Header from "../Header";
 
 export const Add = () => {
@@ -16,10 +13,7 @@ export const Add = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [popular, setPopular] = useState(false);
-  const [topRated, setTopRated] = useState(false);
-  const [nowPlaying, setNowPlaying] = useState(false);
-  const [upcoming, setUpcoming] = useState(false);
+  
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -28,49 +22,22 @@ export const Add = () => {
     fetchAPI();
   }, []);
 
-  useEffect(() => {
-    const fetchAPI = async () => {
-      setResults(await fetchPopularRequest());
-    };
-    if (popular) {
-      fetchAPI();
-      setPopular(false);
-    }
-  }, [popular]);
 
-  useEffect(() => {
-    const fetchAPI = async () => {
-      setResults(await fetchTopRatedRequest());
-    };
-    if (topRated) {
-      fetchAPI();
-      setTopRated(false);
-    }
-  }, [topRated]);
-
-  useEffect(() => {
-    const fetchAPI = async () => {
-      setResults(await fetchNowPlayingRequest());
-    };
-    if (nowPlaying) {
-      fetchAPI();
-      setNowPlaying(false);
-    }
-  }, [nowPlaying]);
-
-  useEffect(() => {
-    const fetchAPI = async () => {
-      setResults(await fetchUpComingRequest());
-    };
-    if (upcoming) {
-      fetchAPI();
-      setUpcoming(false);
-    }
-  }, [upcoming]);
+  const clickOnFilter = (filter) => {
+    fetch(`${url}movie/${filter}?${apiKey}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if(!data.errors) {
+          setResults(data.results);
+        } else {
+          setResults([]);
+        }
+      })
+  }
 
   const clickOnGenre = (e) => {
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_genres=${e}`
+      `${url}discover/movie?${apiKey}&language=en-US&sort_by=popularity.desc&page=1&with_genres=${e}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -85,12 +52,10 @@ export const Add = () => {
 
   const onChange = (e) => {
     e.preventDefault();
-
     setQuery(e.target.value);
-
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
-    )
+    fetch(`
+    ${url}search/movie?${apiKey}&language=en-US&query=${e.target.value}&page=1&include_adult=false
+    `)
       .then((res) => res.json())
       .then((data) => {
         if (!data.errors) {
@@ -120,25 +85,25 @@ export const Add = () => {
             <div className="px-32 py-2 text-center">
               <button
                 className="bg-orange-300 hover:bg-red-500 text-black font-bold py-2 px-4 rounded-full mt-2"
-                onClick={() => setPopular(!popular)}
+               onClick={() => clickOnFilter('popular')}
               >
                 POPULAR
               </button>
               <button
                 className="bg-orange-300 hover:bg-red-500 text-black font-bold py-2 px-4 rounded-full mt-2"
-                onClick={() => setTopRated(!topRated)}
+               onClick={() => clickOnFilter('top_rated')}
               >
                 Top Rated
               </button>
               <button
                 className="bg-orange-300 hover:bg-red-500 text-black font-bold py-2 px-4 rounded-full mt-2"
-                onClick={() => setNowPlaying(!nowPlaying)}
+                onClick={() => clickOnFilter('now_playing')}
               >
                 Now Playing
               </button>
               <button
                 className="bg-orange-300 hover:bg-red-500 text-black font-bold py-2 px-4 rounded-full mt-2"
-                onClick={() => setUpcoming(!upcoming)}
+                onClick={() => clickOnFilter('upcoming')}
               >
                 Upcoming
               </button>

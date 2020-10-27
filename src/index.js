@@ -4,12 +4,31 @@ import ReactDOM from "react-dom";
 import "./assets/main.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { ApolloProvider } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache } from "apollo-boost";
+
+const token = localStorage.getItem("user")
+
+const httpLink = {
+  uri: process.env.GRAPHQL_SERVER_URL,
+  headers: {
+    ...headers,
+    authorization: token ? token : "",
+  }
+};
+
+const client = new ApolloClient({
+  link: new HttpLink(httpLink),
+  cache: new InMemoryCache()
+});
 
 
 ReactDOM.render(
-  <Suspense fallback={<div>Loading...</div>}>
-    <App />
-  </Suspense>,
+  <ApolloProvider client={client}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <App />
+    </Suspense>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 
