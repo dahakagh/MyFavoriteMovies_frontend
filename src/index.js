@@ -5,22 +5,7 @@ import "./assets/main.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ApolloProvider } from "@apollo/client";
-import { ApolloClient, HttpLink, InMemoryCache } from "apollo-boost";
-
-const token = localStorage.getItem("user")
-
-const httpLink = {
-  uri: process.env.GRAPHQL_SERVER_URL,
-  headers: {
-    ...headers,
-    authorization: token ? token : "",
-  }
-};
-
-const client = new ApolloClient({
-  link: new HttpLink(httpLink),
-  cache: new InMemoryCache()
-});
+import client from './apolloClient/index'
 
 
 ReactDOM.render(
